@@ -25,7 +25,7 @@ def init():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("We are running on - "+ str(device) +"!")
 
-    model_id = "EleutherAI/gpt-neox-20b"
+    model_id = "codellama/CodeLlama-7b-hf"
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_use_double_quant=True,
