@@ -43,7 +43,7 @@ def init():
     logging.info("Init complete")
 
 
-def run(input: str):
+def run(mini_batch: List[str]):
     """
     This function is called for every invocation of the endpoint to perform the actual scoring/prediction.
     The function takes query and the max response tokens as inputs.
@@ -54,9 +54,13 @@ def run(input: str):
                                     }
     """
     logging.info("model 1: request received")
-    data = json.loads(input)
-    input_data= data["input"]
-    max_new_tokens= data["max_token_number"]
+    # data = json.loads(input)
+    input_data="You are a powerful Appian SAIL code generation model. Your job is to answer questions about a Appian. You are given a question and context regarding one or more appian functions.
+You must output the SAIL code that answers the question.
+### Input:
+Create a form with date and user field with label  DOB and name" 
+    # data["goal"]
+    max_new_tokens= 4096
     print("Input String - "+str(input_data))
     print("Input max_new_tokens - "+str(max_new_tokens))
     device = "cuda:0"
@@ -68,4 +72,4 @@ def run(input: str):
     print("Output Response String - !")
     print(result_json)
     logging.info("Request processed")
-    return result_json
+    return mini_batch
